@@ -12,9 +12,6 @@ if __name__ == "__main__":
 
     rest_api.wait()
     web_app.wait()
-<<<<<<< HEAD
 #comment Master
-=======
 #comment1
 #comment2
->>>>>>> max_feature
