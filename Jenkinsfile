@@ -9,8 +9,8 @@ pipeline {
         }
         stage('Start Applications') {
             steps {
-                // Run start_apps.py to start the required services
-                bat 'python C:\\git\\MaxDevOpsProject\\start_apps.py'
+                // Run start_apps.py minimized in the background
+                bat 'start /min python C:\\git\\MaxDevOpsProject\\start_apps.py'
             }
         }
         stage('Run Backend Tests') {

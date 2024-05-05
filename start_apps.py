@@ -1,7 +1,7 @@
 import subprocess
 
 def start_app(path):
-    return subprocess.Popen(['python', path])
+    return subprocess.Popen(['python', path], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
 if __name__ == "__main__":
     print("Starting REST API...")
@@ -10,9 +10,5 @@ if __name__ == "__main__":
     print("Starting Web Interface...")
     web_app = start_app('web_app.py')
 
-    rest_api.wait()
-    web_app.wait()
-#comment Master
-#comment1
-#comment2
-#comment3
+    # Do not wait for these processes to finish, they run in the background
+    print("Applications are running in the background.")
