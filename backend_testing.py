@@ -15,6 +15,7 @@ user_data = {"user_name": "Max"}
 
 # Step 1: POST new user data
 response = requests.post(api_url, json=user_data)
+print(response.text)
 if response.status_code != 200:
     raise Exception("test failed: POST request failed")
 
