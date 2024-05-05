@@ -15,12 +15,19 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from db_connector import add_user, get_user, update_user, delete_user
 import logging
+import os
+import signal
 
 # Configure basic logging
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS
+
+@app.route('/stop_server')
+def stop_server():
+    os.kill(os.getpid(), signal.SIGINT)
+    return 'Server stopped'
 
 @app.route('/users/<int:user_id>', methods=['POST'])
 def create_user(user_id):
