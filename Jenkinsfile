@@ -62,6 +62,12 @@ pipeline {
                 }
             }
         }
+        stage('Run Docker Backend Tests') {
+            steps {
+                // Execute docker_backend_testing.py
+                bat 'python C:\\git\\MaxDevOpsProject\\docker_backend_testing.py'
+            }
+        }
         stage('Clean Environment') {
             steps {
                 // Stop servers using clean_environment.py
