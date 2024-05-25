@@ -1,6 +1,13 @@
+import os
+import signal
 from flask import Flask
 
 app = Flask(__name__)
+
+@app.route('/stop_server')
+def stop_server():
+    os.kill(os.getpid(), signal.SIGINT)
+    return 'Server stopped'
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
