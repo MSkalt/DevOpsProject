@@ -5,6 +5,14 @@ pipeline {
         dockerImage = ''
     }
     agent any
+    options {
+        // Enable log rotation
+        buildDiscarder(logRotator(daysToKeepStr: '5', numToKeepStr: '20'))
+    }
+    triggers {
+        // Poll SCM every 30 minutes
+        pollSCM('H/30 * * * *')
+    }
     stages {
         stage('Checkout Code') {
             steps {
